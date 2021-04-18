@@ -3,7 +3,7 @@
 		<v-row justify="center">
 			<v-col sm="12" md="5">
 				<h2 class="text-center subtitle-1 font-weight-bold mb-2">
-					メールアドレスでログイン
+					Log in with your email address
 				</h2>
 				<v-row>
 					<v-col>
@@ -14,8 +14,8 @@
 							grow
 							class="mb-3"
 						>
-							<v-tab to="/login">ログイン</v-tab>
-							<v-tab to="/register">アカウント登録</v-tab>
+							<v-tab to="/login">Login</v-tab>
+							<v-tab to="/register">account registration</v-tab>
 						</v-tabs>
 
 						<v-row>
@@ -29,13 +29,13 @@
 										>
 											<v-text-field
 												v-model="login_email"
-												label="メールアドレス"
+												label="mail address"
 												required
 											/>
 
 											<v-text-field
 												v-model="login_password"
-												label="パスワード"
+												label="password"
 												required
 												:append-icon="
 													show_loginpassword
@@ -67,7 +67,7 @@
 												class="my-4 white--text"
 												@click="email_login"
 											>
-												ログイン
+												Login
 											</v-btn>
 										</v-form>
 									</v-card-text>
@@ -75,25 +75,6 @@
 							</v-col>
 						</v-row>
 						<v-divider class="my-8" />
-						<v-row>
-							<v-col sm="12">
-								<h2
-									class="text-center subtitle-1 font-weight-bold mb-2"
-								>
-									その他のアカウントでログイン
-								</h2>
-							</v-col>
-						</v-row>
-						<v-alert
-							v-if="socialLoginErrorMsg"
-							dense
-							text
-							type="error"
-							dismissible
-						>
-							{{ socialLoginErrorMsg }}
-						</v-alert>
-						<SocialLogin />
 					</v-col>
 				</v-row>
 			</v-col>
@@ -102,14 +83,13 @@
 </template>
 
 <script>
-import SocialLogin from '~/components/SocialLogin.vue'
 
 export default {
 	layout: 'signin',
 	components: {
-		SocialLogin
+		//
 	},
-	data: function() {
+	data () {
 		return {
 			tab: null,
 			login_valid: true,
@@ -137,10 +117,10 @@ export default {
 				.catch((err) => {
 					if (err.code === 'auth/user-disabled') {
 						this.loginErrorMsg =
-							'このアカウントはロックされています。'
+							'This account is locked.'
 					} else {
 						this.loginErrorMsg =
-							'メールアドレスまたはパスワードが間違っています。'
+							'The email address or password is incorrect.'
 					}
 				})
 		}

@@ -9,7 +9,7 @@
 				<v-icon left class="color-twitter__icon" size="22">
 					mdi-twitter
 				</v-icon>
-				Twitterアカウントでログイン
+				Twitter
 			</v-btn>
 			<v-btn
 				block
@@ -19,7 +19,7 @@
 				<v-icon left class="color-facebook__icon" size="22">
 					mdi-facebook
 				</v-icon>
-				Facebookアカウントでログイン
+				Facebook
 			</v-btn>
 			<v-btn
 				block
@@ -57,7 +57,7 @@
 						</g>
 					</svg>
 				</span>
-				Googleアカウントでログイン
+				Google
 			</v-btn>
 		</v-col>
 	</v-row>

@@ -2,7 +2,7 @@
   <v-container>
     <v-row wrap justify="center" align="center">
       <v-col :sm="12" :md="8">
-        <p class="text-center">ログインユーザのみ閲覧可能なコンテンツ</p>
+        <p class="text-center">Content that can only be viewed by logged-in users</p>
         <div class="pa-5">
           <v-btn
             block
@@ -11,7 +11,7 @@
             to="/sample"
             class="white--text"
           >
-            サンプルページへ
+            To sample page
           </v-btn>
         </div>
         <div class="pa-5">
@@ -21,7 +21,7 @@
             color="grey darken-3"
             @click="signOut"
           >
-            ログアウト
+            Logout
           </v-btn>
         </div>
       </v-col>

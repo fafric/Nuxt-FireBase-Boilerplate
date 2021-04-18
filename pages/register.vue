@@ -3,7 +3,7 @@
 		<v-row justify="center">
 			<v-col sm="12" md="5">
 				<h2 class="text-center subtitle-1 font-weight-bold mb-2">
-					メールアドレスで登録
+					Register with email address
 				</h2>
 				<v-row>
 					<v-col>
@@ -14,8 +14,8 @@
 							grow
 							class="mb-3"
 						>
-							<v-tab to="/login">ログイン</v-tab>
-							<v-tab to="/register">アカウント登録</v-tab>
+							<v-tab to="/login">login</v-tab>
+							<v-tab to="/register">account registration</v-tab>
 						</v-tabs>
 
 						<v-row>
@@ -29,7 +29,7 @@
 										>
 											<v-text-field
 												v-model="register_email"
-												label="メールアドレス"
+												label="Email"
 												:rules="emailRules"
 												required
 												validate-on-blur
@@ -38,7 +38,7 @@
 											<v-text-field
 												ref="register_password"
 												v-model="register_password"
-												label="パスワード"
+												label="Password"
 												required
 												:append-icon="
 													show_registerPassword
@@ -70,7 +70,7 @@
 												v-model="
 													register_password_again
 												"
-												label="パスワード（確認）"
+												label="Password confirmation"
 												required
 												:append-icon="
 													show_registerPassword
@@ -106,7 +106,7 @@
 												class="mr-4 white--text"
 												@click="email_register"
 											>
-												登録
+												Registration
 											</v-btn>
 										</v-form>
 									</v-card-text>
@@ -114,17 +114,7 @@
 							</v-col>
 						</v-row>
 						<v-divider class="my-8" />
-						<v-row>
-							<v-col sm="12">
-								<h2
-									class="text-center subtitle-1 font-weight-bold mb-2"
-								>
-									その他のアカウントでログイン
-								</h2>
-							</v-col>
-						</v-row>
-						<SocialLogin />
-					</v-col>
+          </v-col>
 				</v-row>
 			</v-col>
 		</v-row>
@@ -132,7 +122,6 @@
 </template>
 
 <script>
-import SocialLogin from '~/components/SocialLogin.vue'
 import firebase from '@/plugins/firebase'
 import zxcvbn from 'zxcvbn'
 import { mapActions, mapState, mapGetters } from 'vuex'
@@ -140,9 +129,9 @@ import { mapActions, mapState, mapGetters } from 'vuex'
 export default {
 	layout: 'signin',
 	components: {
-		SocialLogin
+		//
 	},
-	data: function() {
+	data () {
 		return {
 			registerErrorMsg: '',
 			tab: null,
@@ -155,7 +144,7 @@ export default {
 					if (v) {
 						return (
 							/.+@.+\..+/.test(v) ||
-							'有効なメールアドレスを入力してください'
+							'Please enter a valid email address'
 						)
 					}else{
 						return true
@@ -163,17 +152,17 @@ export default {
 				}
 			],
 			register_passwordRules: [
-				(v) => !!v || 'パスワードを入力してください',
+				(v) => !!v || 'Please enter your password',
 				(v) =>
 					zxcvbn(v).score >= 3 ||
-					'大文字・小文字・数字・記号を混ぜた強いパスワードにしてください'
+					'Make sure you have a strong password with a mixture of uppercase and lowercase letters, numbers and symbols'
 			],
 			register_passwordAgainRules: [
 				(v) => {
 					if (v) {
 						return (
 							this.$refs.register_password.value === v ||
-							'パスワードと一致しません'
+							'Does not match password'
 						)
 					}else{
 						return true
@@ -235,7 +224,7 @@ export default {
 							params: {
 								dashboard_msg: true,
 								dashboard_msg_text:
-									'アカウントの登録が完了しました。'
+									'Account registration is complete.'
 							}
 						})
 					})
@@ -243,12 +232,12 @@ export default {
 						console.log(err)
 						if (err.code === 'auth/email-already-in-use') {
 							this.registerErrorMsg =
-								'このメールアドレスは既に登録されています。'
+								'This email address is already registered.'
 						} else if (err.code === 'auth/invalid-email') {
-							this.registerErrorMsg = '無効なメールアドレスです。'
+							this.registerErrorMsg = 'Invalid email address.'
 						} else {
 							this.registerErrorMsg =
-								'エラーにより登録できませんでした。'
+								'Could not register due to an error.'
 						}
 					})
 			}
