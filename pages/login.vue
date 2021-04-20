@@ -69,6 +69,7 @@
 											>
 												Login
 											</v-btn>
+                      {{LoginCheck}}
 										</v-form>
 									</v-card-text>
 								</v-card>
@@ -93,8 +94,8 @@ export default {
 		return {
 			tab: null,
 			login_valid: true,
-			login_email: '',
-			login_password: '',
+			login_email: 'test@test.com',
+			login_password: '123321',
 			show_loginpassword: false,
 			loginErrorMsg: '',
 			socialLoginErrorMsg: ''
@@ -124,6 +125,15 @@ export default {
 					}
 				})
 		}
-	}
+	},
+  computed: {
+    LoginCheck() {
+      if (this.$store.getters.isAuthenticated) {
+        this.$router.push({
+						name: 'index'
+					})
+      }
+    }
+  }
 }
 </script>
