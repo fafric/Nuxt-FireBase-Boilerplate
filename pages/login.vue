@@ -108,7 +108,15 @@ export default {
 					email: this.login_email,
 					password: this.login_password
 				})
-				.then(() => {
+				// .then(() => {
+        //     db.collection("Users").doc(this.email_login).get().then(
+        //         res => {
+        //           const UserCompany =  res.data().CompanyName
+        //           this.$store.Commit('CompanyName', UserCompany)
+        //         }
+        //       )
+        // })
+        .then(() => {
 					this.login_email = ''
 					this.login_password = ''
 					this.$router.push({
@@ -133,7 +141,7 @@ export default {
 						name: 'index'
 					})
       }
-    }
-  }
+    },
+  },
 }
 </script>

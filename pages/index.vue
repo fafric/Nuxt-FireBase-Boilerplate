@@ -4,14 +4,14 @@
       <v-col :sm="12" :md="8">
         <p class="text-center">Content that can only be viewed by logged-in users</p>
         <div class="pa-5">
+          {{firedata}}
           <v-btn
             block
             color="indigo darken-1"
-            nuxt
-            to="/sample"
+            @click="getData"
             class="white--text"
           >
-            To sample page
+            Fetch Data
           </v-btn>
         </div>
         <div class="pa-5">
@@ -30,7 +30,26 @@
 </template>
 
 <script>
+import {db} from '~/plugins/firebase'
 export default {
+  async asyncData() {
+    try {
+      const test = await db.collection("message").doc("message").get().then(
+          res => {
+             return res.data()
+          }
+        )
+        return {test}
+
+    } catch (error) {
+      error(error)
+    }
+  },
+ data() {
+   return {
+     firedata: null
+   }
+ },
   methods: {
     signOut: function(err) {
       this.$store
@@ -43,6 +62,19 @@ export default {
         .catch((err) => {
           alert(err.message)
         })
+    },
+    getData() {
+      const userEmail = this.$store.getters.user.email
+      db.collection("Users").where("email", "==" , userEmail).get().then(
+        res => {
+          res.forEach(doc => {
+            console.log(doc.data());
+            const subdoc = {
+
+            }
+          });
+        }
+      )
     }
   }
 }

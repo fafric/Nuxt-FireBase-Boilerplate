@@ -3,12 +3,16 @@ import { auth } from "~/plugins/firebase.js";
 export const strict = false;
 
 export const state = () => ({
-  user: null
+  user: null,
+  CompanyName: null
 });
 
 export const mutations = {
   setUser(state, payload) {
     state.user = payload;
+  },
+  CompanyName(state, payload) {
+    state.CompanyName = payload;
   }
 };
 

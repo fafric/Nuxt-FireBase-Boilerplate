@@ -13,8 +13,10 @@ const config = {
 
 if (!firebase.apps.length) {
   firebase.initializeApp(config);
-  firebase.analytics();
+  // firebase.analytics();
 }
 
 export const auth = firebase.auth;
+export const db = firebase.firestore();
+
 export default firebase;
