@@ -122,9 +122,7 @@
 </template>
 
 <script>
-import firebase from '@/plugins/firebase'
 import zxcvbn from 'zxcvbn'
-import { mapActions, mapState, mapGetters } from 'vuex'
 
 export default {
 	layout: 'signin',

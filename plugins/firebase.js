@@ -1,4 +1,9 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
+import 'firebase/auth';        // for authentication
+import 'firebase/storage';     // for storage
+import 'firebase/firestore';   // for cloud firestore
+import 'firebase/analytics';   // for cloud firestore
+
 
 const config = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -13,10 +18,11 @@ const config = {
 
 if (!firebase.apps.length) {
   firebase.initializeApp(config);
-  // firebase.analytics();
+  firebase.analytics();
 }
 
 export const auth = firebase.auth;
 export const db = firebase.firestore();
+export const storage = firebase.storage();
 
-export default firebase;
+export default db;

@@ -78,7 +78,7 @@ export default {
      */
     extend(config, ctx) {}
   },
-  router: {
-    middleware: "authenticated"
-  }
+  // router: {
+  //   middleware: "authenticated"
+  // }
 };

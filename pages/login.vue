@@ -86,7 +86,6 @@
 <script>
 
 export default {
-	layout: 'signin',
 	components: {
 		//
 	},
@@ -120,7 +119,7 @@ export default {
 					this.login_email = ''
 					this.login_password = ''
 					this.$router.push({
-						name: 'index'
+						name: 'admin'
 					})
 				})
 				.catch((err) => {
@@ -138,7 +137,7 @@ export default {
     LoginCheck() {
       if (this.$store.getters.isAuthenticated) {
         this.$router.push({
-						name: 'index'
+						name: 'admin'
 					})
       }
     },
