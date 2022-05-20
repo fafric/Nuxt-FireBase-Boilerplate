@@ -12,7 +12,7 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_UNITCALC_A9502 }}'
-          projectId: unitcalc-a9502
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LaraAccess }}'
+          projectId: LaraAccess
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
